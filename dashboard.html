@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Owner Dashboard | MyLocalMarket</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="dashboard">
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="MyLocalMarket home">
+        <span class="logo-icon" aria-hidden="true">🌿</span>MyLocal<span class="logo-accent">Market</span>
+      </a>
+
+      <button id="menu-toggle" class="menu-toggle" aria-label="Open menu" aria-expanded="false"
+        aria-controls="main-nav">☰</button>
+
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="shop.html">Shop</a>
+        <a class="nav-link" href="cart.html">🛒 Cart <span id="cart-count" class="badge" aria-live="polite">0</span></a>
+        <a class="nav-link active" href="dashboard.html" aria-current="page">Shop Owner Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1 class="page-title">Shop Owner Dashboard</h1>
+      <p class="page-subtitle">
+        Demonstration of inventory management for <strong>Auntie Ama's Foodstuff Shop</strong> (sample shop).
+        There is no login in this prototype, and changes are saved only in this browser.
+        Whatever you change here appears on the customer pages straight away.
+      </p>
+
+      <!-- Summary cards, filled in by script.js -->
+      <div id="stats-grid" class="stats-grid"></div>
+
+      <!-- Add product -->
+      <h2 class="section-title left">Add a new foodstuff</h2>
+      <form id="add-product-form" class="form-card" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="new-name">Product name</label>
+            <input type="text" id="new-name" placeholder="e.g. Sweet Potatoes">
+          </div>
+          <div class="field">
+            <label for="new-category">Category</label>
+            <select id="new-category"></select>
+          </div>
+          <div class="field">
+            <label for="new-price">Price (GH₵)</label>
+            <input type="number" id="new-price" min="0" step="0.01" placeholder="e.g. 20">
+          </div>
+          <div class="field">
+            <label for="new-unit">Unit</label>
+            <input type="text" id="new-unit" placeholder="e.g. kg, bunch, bowl">
+          </div>
+          <div class="field">
+            <label for="new-stock">Stock quantity</label>
+            <input type="number" id="new-stock" min="0" step="1" placeholder="e.g. 20">
+          </div>
+          <div class="field">
+            <label for="new-emoji">Emoji (shown if there is no photo)</label>
+            <input type="text" id="new-emoji" maxlength="4" placeholder="🍠">
+          </div>
+          <div class="field field-full">
+            <label for="new-image">Photo file name (optional)</label>
+            <input type="text" id="new-image" placeholder="e.g. sweet-potatoes.jpg" autocomplete="off">
+            <span class="small-note">Put the photo in the <strong>images</strong> folder first. If you leave this blank,
+              the site looks for images/&lt;product-name&gt;.jpg.</span>
+          </div>
+        </div>
+        <span class="error" id="err-add-product"></span>
+        <button type="submit" class="btn btn-primary">Add Product</button>
+      </form>
+
+      <!-- Inventory table -->
+      <h2 class="section-title left">Current inventory</h2>
+      <div class="table-wrap">
+        <table class="inventory-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price (GH₵)</th>
+              <th>Stock</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="inventory-body"></tbody>
+        </table>
+      </div>
+
+      <!-- Recent orders -->
+      <h2 class="section-title left">Recent orders (this browser)</h2>
+      <div id="orders-list"></div>
+
+      <div class="reset-box">
+        <button type="button" class="btn btn-danger" id="reset-demo">Reset demo data</button>
+        <span class="small-note">Restores the sample products and clears the cart and saved orders.</span>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> MyLocalMarket · A student web development project · Prices and shops shown are
+        samples</p>
+      <p class="footer-links"><a href="index.html">Home</a> <a href="shop.html">Shop</a> <a href="cart.html">Cart</a> <a
+          href="dashboard.html">Dashboard</a></p>
+    </div>
+  </footer>
+
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+
+</html>

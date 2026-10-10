@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | MyLocalMarket</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="checkout">
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="MyLocalMarket home">
+        <span class="logo-icon" aria-hidden="true">🌿</span>MyLocal<span class="logo-accent">Market</span>
+      </a>
+
+      <button id="menu-toggle" class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">☰</button>
+
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="shop.html">Shop</a>
+        <a class="nav-link active" href="cart.html" aria-current="page">🛒 Cart <span id="cart-count" class="badge" aria-live="polite">0</span></a>
+        <a class="nav-link" href="dashboard.html">Shop Owner Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1 class="page-title">Checkout</h1>
+
+      <!-- Shown instead of the form when the cart is empty -->
+      <div id="checkout-empty" class="empty-state" hidden>
+        <p class="empty-icon" aria-hidden="true">🛒</p>
+        <p>Your cart is empty, so there is nothing to check out yet.</p>
+        <a class="btn btn-primary" href="shop.html">Browse Foodstuffs</a>
+      </div>
+
+      <div id="checkout-content" class="checkout-layout">
+        <form id="checkout-form" class="form-card" novalidate>
+          <h2>Your details</h2>
+
+          <div class="field">
+            <label for="cust-name">Full name</label>
+            <input type="text" id="cust-name" autocomplete="name" placeholder="e.g. Kwame Mensah">
+            <span class="error" id="err-name"></span>
+          </div>
+
+          <div class="field">
+            <label for="cust-phone">Contact number</label>
+            <input type="tel" id="cust-phone" autocomplete="tel" placeholder="e.g. 024 123 4567">
+            <span class="error" id="err-phone"></span>
+          </div>
+
+          <h2>How would you like to get your order?</h2>
+          <div class="option-cards">
+            <label class="option-card">
+              <input type="radio" name="fulfilment" value="delivery">
+              <span class="option-title">🚚 Home Delivery</span>
+              <span class="option-desc" id="delivery-desc"></span>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="fulfilment" value="pickup">
+              <span class="option-title">🏪 Shop Pickup</span>
+              <span class="option-desc" id="pickup-desc"></span>
+            </label>
+          </div>
+          <span class="error" id="err-fulfilment"></span>
+
+          <!-- Shown only when Home Delivery is selected -->
+          <div id="delivery-fields" class="sub-panel" hidden>
+            <div class="field">
+              <label for="cust-address">Delivery address or location description</label>
+              <textarea id="cust-address" rows="3" placeholder="e.g. House 12, Oak Street, near the Total filling station, Madina"></textarea>
+              <span class="error" id="err-address"></span>
+            </div>
+            <p class="info-line" id="delivery-info"></p>
+          </div>
+
+          <!-- Shown only when Shop Pickup is selected -->
+          <div id="pickup-fields" class="sub-panel" hidden>
+            <p class="info-line"><strong>Pickup location:</strong> <span id="pickup-location"></span></p>
+            <div class="field">
+              <label for="pickup-time">Choose a pickup time</label>
+              <select id="pickup-time"></select>
+              <span class="error" id="err-pickup-time"></span>
+            </div>
+          </div>
+
+          <p class="demo-note">
+            <strong>No online payment in this prototype.</strong> Your order is recorded as placed, but nothing
+            is paid through the website. In a real shop, you would pay on delivery or when you collect.
+          </p>
+
+          <button type="submit" id="place-order-btn" class="btn btn-primary btn-lg btn-block">Place Order</button>
+          <a class="btn btn-ghost btn-block" href="cart.html">← Back to cart</a>
+        </form>
+
+        <aside class="summary-card">
+          <h2 class="summary-title">Order Summary</h2>
+          <div id="checkout-items" class="checkout-items"></div>
+          <div class="summary-line"><span>Subtotal</span><strong id="co-subtotal">GH₵ 0.00</strong></div>
+          <div class="summary-line"><span>Delivery fee</span><strong id="co-delivery">Choose an option</strong></div>
+          <div class="summary-line total-line"><span>Total to pay</span><strong id="co-total">GH₵ 0.00</strong></div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> MyLocalMarket · A student web development project · Prices and shops shown are samples</p>
+      <p class="footer-links"><a href="index.html">Home</a> <a href="shop.html">Shop</a> <a href="cart.html">Cart</a> <a href="dashboard.html">Dashboard</a></p>
+    </div>
+  </footer>
+
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

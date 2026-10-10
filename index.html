@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyLocalMarket | Know what's available before you leave home</title>
+  <meta name="description"
+    content="Browse local foodstuffs, check prices and availability, and order for pickup or delivery.">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="home">
+
+  <!-- ===================== HEADER & NAVIGATION (same on every page) ===================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="MyLocalMarket home">
+        <span class="logo-icon" aria-hidden="true">🌿</span>MyLocal<span class="logo-accent">Market</span>
+      </a>
+
+      <button id="menu-toggle" class="menu-toggle" aria-label="Open menu" aria-expanded="false"
+        aria-controls="main-nav">☰</button>
+
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="index.html" aria-current="page">Home</a>
+        <a class="nav-link" href="shop.html">Shop</a>
+        <a class="nav-link" href="cart.html">🛒 Cart <span id="cart-count" class="badge" aria-live="polite">0</span></a>
+        <a class="nav-link" href="dashboard.html">Shop Owner Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="hero-eyebrow">Local foodstuffs, made easy</p>
+        <h1>MyLocal<span class="logo-accent">Market</span></h1>
+        <p class="hero-tagline">Know what's available before you leave home.</p>
+        <p class="hero-text">
+          Browse foodstuffs from your local shop, check prices and stock, then order online.
+          Collect your items at the shop or have them delivered to you for a small fee.
+          No wasted trips. No long queues.
+        </p>
+
+        <!-- A plain HTML form: it opens shop.html?q=... and the shop page does the searching -->
+        <form class="hero-search" action="shop.html" method="get" role="search">
+          <label for="hero-q" class="sr-only">Search foodstuffs</label>
+          <input id="hero-q" type="search" name="q" placeholder="Search, e.g. tomatoes, rice, yam" autocomplete="off">
+          <button type="submit" class="btn btn-accent">Search</button>
+        </form>
+
+        <div class="hero-actions">
+          <a class="btn btn-accent btn-lg" href="shop.html">Start Shopping →</a>
+          <a class="btn btn-outline-light btn-lg" href="dashboard.html">I'm a shop owner</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+
+      <!-- Live numbers filled in by script.js -->
+      <div id="home-stats" class="stat-strip" aria-label="Shop at a glance"></div>
+
+      <!-- ===================== HOW IT WORKS ===================== -->
+      <h2 class="section-title">How it works</h2>
+      <div class="steps">
+        <div class="step-card">
+          <span class="step-icon" aria-hidden="true">🔍</span>
+          <h3>1. Browse &amp; check</h3>
+          <p>See what is in stock and the price of each item before you travel.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-icon" aria-hidden="true">🛒</span>
+          <h3>2. Fill your cart</h3>
+          <p>Pick everything you need in one order and review your total.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-icon" aria-hidden="true">🚚</span>
+          <h3>3. Pick up or get it delivered</h3>
+          <p>Collect from the shop at a time you choose, or have it brought to you.</p>
+        </div>
+      </div>
+
+      <!-- ===================== SHOP BY CATEGORY ===================== -->
+      <h2 class="section-title">Shop by category</h2>
+      <div class="category-grid">
+        <a class="category-card" href="shop.html?category=Vegetables"><span aria-hidden="true">🥬</span>Vegetables</a>
+        <a class="category-card" href="shop.html?category=Fruits"><span aria-hidden="true">🍍</span>Fruits</a>
+        <a class="category-card" href="shop.html?category=Grains"><span aria-hidden="true">🍚</span>Grains</a>
+        <a class="category-card" href="shop.html?category=Tubers"><span aria-hidden="true">🍠</span>Tubers</a>
+        <a class="category-card" href="shop.html?category=Cooking%20Ingredients"><span
+            aria-hidden="true">🛢️</span>Cooking Ingredients</a>
+      </div>
+
+      <!-- ===================== IN STOCK TODAY ===================== -->
+      <div class="section-head">
+        <h2>In stock today</h2>
+        <a href="shop.html">See all foodstuffs →</a>
+      </div>
+      <div id="featured-grid" class="product-grid"></div>
+
+      <!-- ===================== PICKUP OR DELIVERY ===================== -->
+      <h2 class="section-title">Pick up or get it delivered</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <span class="step-icon" aria-hidden="true">🏪</span>
+          <h3>Shop Pickup</h3>
+          <p>Order online, then collect from the shop at a time you choose. No delivery fee.</p>
+        </div>
+        <div class="info-card alt">
+          <span class="step-icon" aria-hidden="true">🚚</span>
+          <h3>Home Delivery</h3>
+          <p>Have your foodstuffs brought to your location for a small fee of <strong data-fee></strong>.</p>
+        </div>
+      </div>
+
+      <!-- ===================== FOR SHOP OWNERS ===================== -->
+      <div class="owner-band">
+        <h2>Run a foodstuff shop?</h2>
+        <p>Use the dashboard to add products, update prices and stock, and mark items as out of stock so customers
+          always see what is really available.</p>
+        <a class="btn btn-primary" href="dashboard.html">Open the Shop Owner Dashboard</a>
+      </div>
+
+      <p class="demo-note">
+        <strong>Prototype note:</strong> This is not a complex design. No real payments are taken, and
+        data is saved only in this browser.
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> MyLocalMarket. Prices and shops shown are samples, and not real shops that exist</p>
+      <p class="footer-links"><a href="index.html">Home</a> <a href="shop.html">Shop</a> <a href="cart.html">Cart</a> <a
+          href="dashboard.html">Dashboard</a></p>
+    </div>
+  </footer>
+
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+
+</html>

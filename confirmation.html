@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation | MyLocalMarket</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="confirmation">
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="MyLocalMarket home">
+        <span class="logo-icon" aria-hidden="true">🌿</span>MyLocal<span class="logo-accent">Market</span>
+      </a>
+
+      <button id="menu-toggle" class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">☰</button>
+
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="shop.html">Shop</a>
+        <a class="nav-link" href="cart.html">🛒 Cart <span id="cart-count" class="badge" aria-live="polite">0</span></a>
+        <a class="nav-link" href="dashboard.html">Shop Owner Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container narrow">
+      <!-- Filled in by script.js using the ?ref= value in the address -->
+      <div id="confirmation-content" class="confirmation-card"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> MyLocalMarket · A student web development project · Prices and shops shown are samples</p>
+      <p class="footer-links"><a href="index.html">Home</a> <a href="shop.html">Shop</a> <a href="cart.html">Cart</a> <a href="dashboard.html">Dashboard</a></p>
+    </div>
+  </footer>
+
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
